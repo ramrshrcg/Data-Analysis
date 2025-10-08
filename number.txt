@@ -1,1 +1,2 @@
 9808483309
+source venv/bin/activate 

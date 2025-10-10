@@ -4,3 +4,5 @@ lxml
 bs4
 matplotlib
 seaborn
+sklearn
+imbalanced-learn

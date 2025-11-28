@@ -26,3 +26,73 @@ INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity, Su
 
 SELECT * from Products
 
+--example 1
+--add a column to categorize each product into categorise into high, medium and low
+SELECT * ,
+CASE 
+    when price >500 then 'High'
+    when  price  <=500 and price >= 200 then 'Medium'
+    else 'Low'
+end as [Price Category]
+ from products 
+
+ --example 2
+ -- provide priority to each category and sort the data according to that priority
+
+ SELECT *  from products 
+ ORDER by 
+ case 
+    when category in ('Electronics') then 1
+    when category in ('Furniture') then 2
+    else 3
+END
+
+
+--------------------------------------------------------------------------------
+--nested case statement 
+--categorize into different groups
+
+select * from  Products
+
+--group the data based on column category  and price into diffferernt categories in affordable and premium 
+select *,
+case 
+    when Category= 'Electronics' then 
+        case 
+            when price >=30 then 'Premium'
+            else 'Affordable'
+        end
+    when Category= 'Furniture' then 
+        case
+            when price>= 250 then 'Premium'
+            else 'Afffordable'
+        end 
+    else 
+        case 
+            when price >=25 then 'Premium '
+            else 'Affordable'
+        END
+end as [Groups]
+from Products
+
+------------
+
+select *,
+case 
+    when Category= 'Electronics' then 
+        case 
+            when price >=30 then 'Premium'
+            else 'Affordable'
+        end
+    when Category= 'Furniture' then 
+        case
+            when price>= 250 then 'Premium'
+            else 'Afffordable'
+        end 
+    when Category = 'Accessories' then 
+        case 
+            when price >=25 then 'Premium '
+            else 'Affordable'
+        END
+end as [Groups]
+from Products
